@@ -54,6 +54,9 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		Variables     map[string]interface{} `json:"variables"`
 	}
 	if r.Method == http.MethodOptions {
+		// w.Header().Set("Access-Control-Allow-Origin", "*")
+		// w.Header().Set("Access-Control-Allow-Headers", "content-type")
+		// w.Header().Set("Access-Control-Request-Method", "POST")
 		w.WriteHeader(http.StatusOK)
 		return
 	}
@@ -69,6 +72,9 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// w.Header().Set("Access-Control-Allow-Origin", "*")
+	// w.Header().Set("Access-Control-Allow-Headers", "content-type")
+	// w.Header().Set("Access-Control-Request-Method", "POST")
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(responseJSON)
 }
